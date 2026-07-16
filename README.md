@@ -8,9 +8,9 @@ Dự án thiết kế giao diện website thương mại điện tử ngành F&B
 
 | Họ và tên | MSSV | Chuyên ngành | Phân công công việc | Trạng thái Git Branch |
 | :--- | :--- | :--- | :--- | :--- |
-| **Đoàn Xuân Tiến** | 2374802010493 | Trí tuệ Nhân tạo | Quản lý File Báo cáo Word. Thiết kế luồng User Flow (Login, Profile, Order History). Tìm kiếm tài nguyên. Định hướng Frontend Intern. | `feature/doan-xuan-tien` |
-| **Xuân Phước** | (Cập nhật MSSV) | Công nghệ thông tin | Thiết lập Figma Design System. Code luồng Khám phá (Trang Chủ, Thực đơn, Giới thiệu). | `feature/xuan-phuoc` |
-| **Võ Thanh Danh** | (Cập nhật MSSV) | Công nghệ thông tin | Thiết lập Prototype. Code luồng Mua hàng (Chi tiết SP, Giỏ hàng, Checkout, Success). | `feature/thanh-danh` |
+| **Đoàn Xuân Tiến** |  | Công nghệ thông tin | Quản lý File Báo cáo Word. Thiết kế luồng User Flow (Login, Profile, Order History). Tìm kiếm tài nguyên. Định hướng Frontend Intern. | `feature/doan-xuan-tien` |
+| **Xuân Phước** |  | Công nghệ thông tin | Thiết lập Figma Design System. Code luồng Khám phá (Trang Chủ, Thực đơn, Giới thiệu). | `feature/xuan-phuoc` |
+| **Võ Thanh Danh** |  | Công nghệ thông tin | Thiết lập Prototype. Code luồng Mua hàng (Chi tiết SP, Giỏ hàng, Checkout, Success). | `feature/thanh-danh` |
 
 ## 🛠 Công nghệ & Công cụ sử dụng
 - **Thiết kế UI/UX:** Figma (Wireframe & High-fidelity Prototype).
