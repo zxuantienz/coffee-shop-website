@@ -6,42 +6,10 @@
     <title>Đặt hàng thành công | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .success-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            padding: 2rem 5%;
-        }
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #28a745;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            animation: scaleIn 0.5s ease-out;
-        }
-        @keyframes scaleIn {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
-        }
-        .order-code {
-            background: #fff;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+        .success-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center; padding: 2rem 5%; }
+        .success-icon { width: 80px; height: 80px; background: #28a745; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 1.5rem; animation: scaleIn 0.5s ease-out; }
+        @keyframes scaleIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+        .order-code { background: #fff; padding: 1rem 2rem; border-radius: 5px; font-weight: bold; font-size: 1.2rem; color: var(--primary-color); margin: 1.5rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -59,7 +27,7 @@
             Mã đơn hàng: #QT9942
         </div>
 
-        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
             <a href="../auth/history.html" class="btn-primary" style="background-color: var(--primary-color);">Theo dõi đơn hàng</a>
             <a href="../../index.html" class="btn-primary">Về Trang chủ</a>
         </div>

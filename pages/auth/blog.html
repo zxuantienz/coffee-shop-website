@@ -6,49 +6,13 @@
     <title>Blog & Tin tức | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .blog-header {
-            text-align: center;
-            padding: 3rem 5%;
-        }
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto 3rem;
-            padding: 0 5%;
-        }
-        .blog-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        .blog-img {
-            height: 200px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-        }
-        .blog-content {
-            padding: 1.5rem;
-        }
-        .blog-tag {
-            background: var(--accent-color);
-            color: #fff;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
+        .blog-header { text-align: center; padding: 3rem 5%; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; padding: 0 5%; }
+        .blog-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-content { padding: 1.5rem; }
+        .blog-tag { background: var(--accent-color); color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-bottom: 1rem; }
     </style>
 </head>
 <body>
@@ -69,9 +33,8 @@
     </div>
 
     <main class="blog-grid">
-        <!-- Bài viết 1 -->
         <article class="blog-card">
-            <div class="blog-img">[Ảnh Hạt Cà Phê]</div>
+            <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=600&q=80" alt="Hạt Cà Phê" class="blog-img">
             <div class="blog-content">
                 <span class="blog-tag">Kiến thức</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phân biệt cà phê Arabica và Robusta</h3>
@@ -80,9 +43,8 @@
             </div>
         </article>
 
-        <!-- Bài viết 2 -->
         <article class="blog-card">
-            <div class="blog-img">[Ảnh Khuyến mãi Voucher]</div>
+            <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=600&q=80" alt="Khuyến mãi" class="blog-img">
             <div class="blog-content">
                 <span class="blog-tag" style="background: #28a745;">Khuyến mãi</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Giảm giá 20% cho thành viên Hạng Vàng</h3>
@@ -91,9 +53,8 @@
             </div>
         </article>
 
-        <!-- Bài viết 3 -->
         <article class="blog-card">
-            <div class="blog-img">[Ảnh Pha máy Espresso]</div>
+            <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?auto=format&fit=crop&w=600&q=80" alt="Máy Espresso" class="blog-img">
             <div class="blog-content">
                 <span class="blog-tag">Trải nghiệm</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Nghệ thuật pha chế Espresso hoàn hảo</h3>

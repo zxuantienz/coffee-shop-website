@@ -6,53 +6,14 @@
     <title>Thanh toán | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .checkout-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 2rem auto;
-            gap: 2rem;
-            padding: 0 5%;
-        }
-        .checkout-form, .order-summary {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            flex: 1;
-            min-width: 300px;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: var(--font-main);
-        }
-        .payment-methods label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .payment-methods input:checked + label {
-            border-color: var(--accent-color);
-            background: #fff9f2;
-        }
+        .checkout-container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 2rem auto; gap: 2rem; padding: 0 5%; }
+        .checkout-form, .order-summary { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex: 1; min-width: 300px; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-dark); }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: var(--font-main); }
+        .payment-methods label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding: 1rem; border: 1px solid #eee; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        .payment-methods input[type="radio"] { display: none; }
+        .payment-methods input:checked + label { border-color: var(--accent-color); background: #fff9f2; }
     </style>
 </head>
 <body>
@@ -67,7 +28,6 @@
     </header>
 
     <main class="checkout-container">
-        <!-- Form Thông tin giao hàng -->
         <div class="checkout-form">
             <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Thông tin giao hàng</h2>
             <form action="success.html">
@@ -86,13 +46,13 @@
                 
                 <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Phương thức thanh toán</h3>
                 <div class="payment-methods">
-                    <input type="radio" name="payment" id="pay-cod" style="display: none;" checked>
+                    <input type="radio" name="payment" id="pay-cod" checked>
                     <label for="pay-cod">💵 Thanh toán khi nhận hàng (COD)</label>
 
-                    <input type="radio" name="payment" id="pay-momo" style="display: none;">
+                    <input type="radio" name="payment" id="pay-momo">
                     <label for="pay-momo">🟣 Ví MoMo</label>
 
-                    <input type="radio" name="payment" id="pay-vnpay" style="display: none;">
+                    <input type="radio" name="payment" id="pay-vnpay">
                     <label for="pay-vnpay">🔵 VNPay / Thẻ ngân hàng</label>
                 </div>
 
@@ -100,7 +60,6 @@
             </form>
         </div>
 
-        <!-- Tóm tắt đơn hàng -->
         <div class="order-summary">
             <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Đơn hàng của bạn</h2>
             <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">

@@ -17,13 +17,9 @@
         .product-image {
             flex: 1;
             min-width: 300px;
-            background: #e9e9e9;
             border-radius: 15px;
             height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
+            overflow: hidden;
         }
         .product-info {
             flex: 1;
@@ -35,20 +31,13 @@
             font-weight: bold;
             margin: 1rem 0;
         }
-        /* Customization Options */
-        .option-group {
-            margin-bottom: 1.5rem;
-        }
+        .option-group { margin-bottom: 1.5rem; }
         .option-title {
             font-weight: bold;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        .radio-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .radio-options { display: flex; gap: 1rem; flex-wrap: wrap; }
         .radio-options label {
             background: #fff;
             padding: 0.5rem 1rem;
@@ -57,22 +46,14 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        /* Ẩn input radio mặc định */
         .radio-options input[type="radio"], 
-        .radio-options input[type="checkbox"] {
-            display: none;
-        }
-        /* Style khi được chọn (Giả lập active state) */
+        .radio-options input[type="checkbox"] { display: none; }
         .radio-options input:checked + label {
             border-color: var(--accent-color);
             background: var(--accent-color);
             color: #fff;
         }
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+        .action-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
         .quantity-control {
             display: flex;
             align-items: center;
@@ -109,61 +90,50 @@
     </header>
 
     <main class="product-detail-container">
-        <!-- Khu vực ảnh sản phẩm -->
         <div class="product-image">
-            [Ảnh Cà Phê Sữa Đá High-fidelity]
+            <img src="https://images.unsplash.com/photo-1517701550927-30cfcb64ac45?auto=format&fit=crop&w=800&q=80" alt="Cà Phê Sữa Đá" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
-        <!-- Khu vực tùy chọn -->
         <div class="product-info">
             <h1 style="color: var(--primary-color);">Cà Phê Sữa Đá</h1>
             <div class="product-price">45.000 VNĐ</div>
             <p style="margin-bottom: 1.5rem; color: #555;">Hương vị cà phê Robusta đậm đà hòa quyện cùng sữa đặc truyền thống, mang lại sự tỉnh táo tức thì.</p>
 
             <form action="cart.html">
-                <!-- Size -->
                 <div class="option-group">
                     <div class="option-title">Chọn Size</div>
                     <div class="radio-options">
                         <input type="radio" name="size" id="size-s" checked>
                         <label for="size-s">Nhỏ (S)</label>
-                        
                         <input type="radio" name="size" id="size-m">
                         <label for="size-m">Vừa (M) +10k</label>
-                        
                         <input type="radio" name="size" id="size-l">
                         <label for="size-l">Lớn (L) +15k</label>
                     </div>
                 </div>
 
-                <!-- Lượng Đường -->
                 <div class="option-group">
                     <div class="option-title">Lượng Đường</div>
                     <div class="radio-options">
                         <input type="radio" name="sugar" id="sugar-100" checked>
                         <label for="sugar-100">100% Đường</label>
-                        
                         <input type="radio" name="sugar" id="sugar-50">
                         <label for="sugar-50">50% Đường</label>
-                        
                         <input type="radio" name="sugar" id="sugar-0">
                         <label for="sugar-0">Không Đường</label>
                     </div>
                 </div>
 
-                <!-- Thêm Topping -->
                 <div class="option-group">
                     <div class="option-title">Topping (Thêm hạt)</div>
                     <div class="radio-options">
                         <input type="checkbox" id="top-tranchau">
                         <label for="top-tranchau">Trân châu trắng +10k</label>
-                        
                         <input type="checkbox" id="top-kem">
                         <label for="top-kem">Kem Macchiato +15k</label>
                     </div>
                 </div>
 
-                <!-- Mua hàng -->
                 <div class="action-buttons">
                     <div class="quantity-control">
                         <button type="button">-</button>
