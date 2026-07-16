@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .checkout-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 2rem auto;
+            gap: 2rem;
+            padding: 0 5%;
+        }
+        .checkout-form, .order-summary {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 300px;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--font-main);
+        }
+        .payment-methods label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .payment-methods input:checked + label {
+            border-color: var(--accent-color);
+            background: #fff9f2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Quyết Tiến Coffee</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="cart.html">Quay lại Giỏ hàng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="checkout-container">
+        <!-- Form Thông tin giao hàng -->
+        <div class="checkout-form">
+            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Thông tin giao hàng</h2>
+            <form action="success.html">
+                <div class="form-group">
+                    <label for="fullname">Họ và Tên</label>
+                    <input type="text" id="fullname" placeholder="Nhập họ và tên người nhận" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" id="phone" placeholder="Nhập số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ nhận hàng</label>
+                    <textarea id="address" rows="3" placeholder="Số nhà, Tên đường, Phường/Xã, Quận/Huyện" required></textarea>
+                </div>
+                
+                <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Phương thức thanh toán</h3>
+                <div class="payment-methods">
+                    <input type="radio" name="payment" id="pay-cod" style="display: none;" checked>
+                    <label for="pay-cod">💵 Thanh toán khi nhận hàng (COD)</label>
+
+                    <input type="radio" name="payment" id="pay-momo" style="display: none;">
+                    <label for="pay-momo">🟣 Ví MoMo</label>
+
+                    <input type="radio" name="payment" id="pay-vnpay" style="display: none;">
+                    <label for="pay-vnpay">🔵 VNPay / Thẻ ngân hàng</label>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">Xác nhận đặt hàng</button>
+            </form>
+        </div>
+
+        <!-- Tóm tắt đơn hàng -->
+        <div class="order-summary">
+            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Đơn hàng của bạn</h2>
+            <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>1x Cà Phê Sữa Đá (Size M)</span>
+                    <strong>55.000đ</strong>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #666;">
+                <span>Tạm tính</span>
+                <span>55.000đ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; color: #666;">
+                <span>Phí vận chuyển</span>
+                <span>15.000đ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold;">
+                <span>Tổng cộng</span>
+                <span style="color: var(--accent-color);">70.000 VNĐ</span>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

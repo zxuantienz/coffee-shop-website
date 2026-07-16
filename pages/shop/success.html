@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        .order-code {
+            background: #fff;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Quyết Tiến Coffee</div>
+    </header>
+
+    <main class="success-container">
+        <div class="success-icon">✓</div>
+        <h1 style="color: var(--primary-color);">Cảm ơn bạn đã đặt hàng!</h1>
+        <p style="color: #666; margin-top: 1rem; max-width: 500px;">Đơn hàng của bạn đã được tiếp nhận và đang trong quá trình xử lý. Chúng tôi sẽ giao hàng đến bạn trong thời gian sớm nhất (Dự kiến 20 - 30 phút).</p>
+        
+        <div class="order-code">
+            Mã đơn hàng: #QT9942
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+            <a href="../auth/history.html" class="btn-primary" style="background-color: var(--primary-color);">Theo dõi đơn hàng</a>
+            <a href="../../index.html" class="btn-primary">Về Trang chủ</a>
+        </div>
+    </main>
+
+</body>
+</html>

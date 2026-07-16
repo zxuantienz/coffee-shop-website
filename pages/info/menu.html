@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực đơn | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .menu-header {
+            text-align: center;
+            padding: 3rem 5%;
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 5%;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #fff;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Quyết Tiến Coffee</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="#" style="color: var(--accent-color);">Thực đơn</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu-header">
+        <h1 style="color: var(--accent-color);">Thực Đơn Của Chúng Tôi</h1>
+        <p>Hương vị nguyên bản, đánh thức mọi giác quan</p>
+    </div>
+
+    <!-- Bộ lọc danh mục -->
+    <div class="category-filter">
+        <button class="filter-btn active">Tất cả</button>
+        <button class="filter-btn">Cà Phê</button>
+        <button class="filter-btn">Trà Trái Cây</button>
+        <button class="filter-btn">Bánh Ngọt</button>
+    </div>
+
+    <main class="product-grid">
+        <!-- Sản phẩm 1 -->
+        <div class="product-card">
+            <a href="../shop/product-detail.html">
+                <div style="height: 200px; background: #ddd; border-radius: 5px; margin-bottom: 1rem;">[Ảnh Cà Phê Sữa]</div>
+                <h3 style="color: var(--primary-color);">Cà Phê Sữa Đá</h3>
+                <p style="color: #666; margin: 0.5rem 0;">45.000 VNĐ</p>
+            </a>
+            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="product-card">
+            <a href="../shop/product-detail.html">
+                <div style="height: 200px; background: #ddd; border-radius: 5px; margin-bottom: 1rem;">[Ảnh Trà Đào]</div>
+                <h3 style="color: var(--primary-color);">Trà Đào Cam Sả</h3>
+                <p style="color: #666; margin: 0.5rem 0;">55.000 VNĐ</p>
+            </a>
+            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="product-card">
+            <a href="../shop/product-detail.html">
+                <div style="height: 200px; background: #ddd; border-radius: 5px; margin-bottom: 1rem;">[Ảnh Bánh]</div>
+                <h3 style="color: var(--primary-color);">Bánh Croissant Bơ Tỏi</h3>
+                <p style="color: #666; margin: 0.5rem 0;">35.000 VNĐ</p>
+            </a>
+            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+        </div>
+    </main>
+
+</body>
+</html>

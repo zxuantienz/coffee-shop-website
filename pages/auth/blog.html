@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Tin tức | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .blog-header {
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            padding: 0 5%;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-img {
+            height: 200px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+        .blog-content {
+            padding: 1.5rem;
+        }
+        .blog-tag {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Quyết Tiến Coffee</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="#" style="color: var(--accent-color);">Tin tức</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="blog-header">
+        <h1 style="color: var(--primary-color);">Góc Chia Sẻ & Khuyến Mãi</h1>
+        <p style="color: #666; margin-top: 0.5rem;">Khám phá kiến thức về cà phê và không bỏ lỡ các ưu đãi hấp dẫn.</p>
+    </div>
+
+    <main class="blog-grid">
+        <!-- Bài viết 1 -->
+        <article class="blog-card">
+            <div class="blog-img">[Ảnh Hạt Cà Phê]</div>
+            <div class="blog-content">
+                <span class="blog-tag">Kiến thức</span>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phân biệt cà phê Arabica và Robusta</h3>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Bạn có biết sự khác biệt giữa hai loại hạt cà phê phổ biến nhất thế giới này nằm ở đâu không? Cùng tìm hiểu nhé!</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Bài viết 2 -->
+        <article class="blog-card">
+            <div class="blog-img">[Ảnh Khuyến mãi Voucher]</div>
+            <div class="blog-content">
+                <span class="blog-tag" style="background: #28a745;">Khuyến mãi</span>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Giảm giá 20% cho thành viên Hạng Vàng</h3>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Chương trình tri ân đặc biệt dành riêng cho các thành viên thân thiết trong tháng này. Đừng bỏ lỡ!</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Bài viết 3 -->
+        <article class="blog-card">
+            <div class="blog-img">[Ảnh Pha máy Espresso]</div>
+            <div class="blog-content">
+                <span class="blog-tag">Trải nghiệm</span>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Nghệ thuật pha chế Espresso hoàn hảo</h3>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Khám phá quy trình chiết xuất để có một lớp Crema tuyệt đẹp trên bề mặt ly Espresso của bạn.</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+            </div>
+        </article>
+    </main>
+
+</body>
+</html>

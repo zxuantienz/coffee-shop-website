@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .cart-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .cart-table th, .cart-table td {
+            padding: 1.5rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-table th {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .item-img {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+        .qty-btn {
+            padding: 0.2rem 0.6rem;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+        .cart-summary {
+            margin-top: 2rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: right;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 768px) {
+            .cart-table thead { display: none; }
+            .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+                display: block;
+                width: 100%;
+            }
+            .cart-table tr { margin-bottom: 1rem; border: 1px solid #eee; }
+            .cart-table td { text-align: right; padding-left: 50%; position: relative; }
+            .cart-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                width: 45%;
+                text-align: left;
+                font-weight: bold;
+            }
+            .item-info { justify-content: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Quyết Tiến Coffee</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../info/menu.html">Tiếp tục mua hàng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-container">
+        <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Giỏ Hàng Của Bạn</h2>
+        
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Sản phẩm">
+                        <div class="item-info">
+                            <div class="item-img"></div>
+                            <div>
+                                <strong>Cà Phê Sữa Đá</strong><br>
+                                <span style="font-size: 0.85rem; color: #888;">Size M, 50% Đường</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-label="Đơn giá">55.000đ</td>
+                    <td data-label="Số lượng">
+                        <button class="qty-btn">-</button> 1 <button class="qty-btn">+</button>
+                    </td>
+                    <td data-label="Thành tiền" style="color: var(--accent-color); font-weight: bold;">55.000đ</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Tổng cộng: <span style="font-size: 1.5rem; color: var(--accent-color); font-weight: bold;">55.000 VNĐ</span></p>
+            <a href="checkout.html" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">Tiến hành thanh toán</a>
+        </div>
+    </main>
+
+</body>
+</html>
