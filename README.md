@@ -2,8 +2,8 @@
 
 Dự án thiết kế giao diện website thương mại điện tử ngành F&B (Cửa hàng Cà phê), thuộc khuôn khổ Đồ án môn học Kỹ thuật phần mềm. Hệ thống được thiết kế tối ưu cho việc đặt món nhanh và trải nghiệm thị giác hấp dẫn dựa trên nguyên tắc màu 60-30-10.
 
-🔗 **Link truy cập Website (Live Demo):** `[Nhóm dán link Netlify vào đây]`  
-🎨 **Link bản thiết kế (Figma):** `[Nhóm dán link Figma vào đây]`
+🔗 **Link truy cập Website (Live Demo):** figma.com/design/bhIy3I6GnsE3lVd6OETxBv/41.Xuân-Tiến-Đoàn-s-team-library?t=3SCaboDysvfkLweg-0 
+🎨 **Link bản thiết kế (Figma):** figma.com/proto/bhIy3I6GnsE3lVd6OETxBv/41.Xuân-Tiến-Đoàn-s-team-library?node-id=3359-123&t=3SCaboDysvfkLweg-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&fuid=1562799235958100802
 
 ## 👥 Thành viên nhóm & Phân công công việc
 
