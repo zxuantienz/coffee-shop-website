@@ -10,7 +10,7 @@
         .checkout-form, .order-summary { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex: 1; min-width: 300px; }
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--text-dark); }
-        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: var(--font-main); }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
         .payment-methods label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding: 1rem; border: 1px solid #eee; border-radius: 5px; cursor: pointer; transition: 0.2s; }
         .payment-methods input[type="radio"] { display: none; }
         .payment-methods input:checked + label { border-color: var(--accent-color); background: #fff9f2; }
@@ -22,9 +22,16 @@
         <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="cart.html">Quay lại Giỏ hàng</a></li>
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../info/menu.html">Thực đơn</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="cart.html" style="color: var(--accent-color);">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="checkout-container">
@@ -33,26 +40,26 @@
             <form action="success.html">
                 <div class="form-group">
                     <label for="fullname">Họ và Tên</label>
-                    <input type="text" id="fullname" placeholder="Nhập họ và tên người nhận" required>
+                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên người nhận" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" placeholder="Nhập số điện thoại" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Địa chỉ nhận hàng</label>
-                    <textarea id="address" rows="3" placeholder="Số nhà, Tên đường, Phường/Xã, Quận/Huyện" required></textarea>
+                    <textarea id="address" name="address" rows="3" placeholder="Số nhà, Tên đường, Phường/Xã, Quận/Huyện" required></textarea>
                 </div>
                 
                 <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Phương thức thanh toán</h3>
                 <div class="payment-methods">
-                    <input type="radio" name="payment" id="pay-cod" checked>
+                    <input type="radio" name="payment_method" value="cod" id="pay-cod" checked>
                     <label for="pay-cod">💵 Thanh toán khi nhận hàng (COD)</label>
 
-                    <input type="radio" name="payment" id="pay-momo">
+                    <input type="radio" name="payment_method" value="momo" id="pay-momo">
                     <label for="pay-momo">🟣 Ví MoMo</label>
 
-                    <input type="radio" name="payment" id="pay-vnpay">
+                    <input type="radio" name="payment_method" value="vnpay" id="pay-vnpay">
                     <label for="pay-vnpay">🔵 VNPay / Thẻ ngân hàng</label>
                 </div>
 
@@ -83,5 +90,9 @@
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

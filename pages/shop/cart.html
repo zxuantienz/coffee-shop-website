@@ -6,7 +6,7 @@
     <title>Giỏ hàng | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .cart-container { max-width: 900px; margin: 2rem auto; padding: 0 5%; }
+        .cart-container { max-width: 900px; margin: 2rem auto; padding: 0 5%; min-height: 60vh; }
         .cart-table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
         .cart-table th, .cart-table td { padding: 1.5rem 1rem; text-align: left; border-bottom: 1px solid #eee; }
         .cart-table th { background: var(--primary-color); color: #fff; }
@@ -31,9 +31,15 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../info/menu.html">Tiếp tục mua hàng</a></li>
+                <li><a href="../info/menu.html">Thực đơn</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="cart.html" style="color: var(--accent-color);">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="cart-container">
@@ -74,5 +80,9 @@
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

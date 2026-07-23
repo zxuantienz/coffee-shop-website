@@ -9,7 +9,7 @@
         .contact-container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 2rem; padding: 0 5%; }
         .contact-info, .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 1rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
         .map-placeholder { width: 100%; height: 250px; margin-top: 1.5rem; border-radius: 5px; overflow: hidden; }
     </style>
 </head>
@@ -20,9 +20,15 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="#" style="color: var(--accent-color);">Liên hệ</a></li>
+                <li><a href="menu.html">Thực đơn</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="about.html">Về chúng tôi</a></li>
+                <li><a href="contact.html" style="color: var(--accent-color);">Liên hệ</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="contact-container">
@@ -41,18 +47,22 @@
             <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Gửi Góp Ý Cho Chúng Tôi</h2>
             <form action="#">
                 <div class="form-group">
-                    <input type="text" placeholder="Họ và tên của bạn" required>
+                    <input type="text" name="fullname" placeholder="Họ và tên của bạn" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email liên hệ" required>
+                    <input type="email" name="email" placeholder="Email liên hệ" required>
                 </div>
                 <div class="form-group">
-                    <textarea rows="5" placeholder="Nội dung tin nhắn..." required></textarea>
+                    <textarea rows="5" name="message" placeholder="Nội dung tin nhắn..." required></textarea>
                 </div>
                 <button type="submit" class="btn-primary" style="width: 100%;">Gửi Tin Nhắn</button>
             </form>
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

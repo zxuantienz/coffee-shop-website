@@ -6,33 +6,10 @@
     <title>Thực đơn | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .menu-header {
-            text-align: center;
-            padding: 3rem 5%;
-            background: var(--primary-color);
-            color: #fff;
-        }
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 2rem 5%;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            background: #fff;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--primary-color);
-            color: #fff;
-        }
+        .menu-header { text-align: center; padding: 3rem 5%; background: var(--primary-color); color: #fff; }
+        .category-filter { display: flex; justify-content: center; gap: 1rem; padding: 2rem 5%; flex-wrap: wrap; }
+        .filter-btn { background: #fff; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 0.5rem 1.5rem; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: #fff; }
     </style>
 </head>
 <body>
@@ -42,10 +19,15 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="#" style="color: var(--accent-color);">Thực đơn</a></li>
+                <li><a href="menu.html" style="color: var(--accent-color);">Thực đơn</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="about.html">Về chúng tôi</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
                 <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <div class="menu-header">
@@ -67,7 +49,7 @@
                 <h3 style="color: var(--primary-color);">Cà Phê Sữa Đá</h3>
                 <p style="color: #666; margin: 0.5rem 0;">45.000 VNĐ</p>
             </a>
-            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+            <button class="btn-primary add-to-cart" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
         </div>
 
         <div class="product-card">
@@ -76,7 +58,7 @@
                 <h3 style="color: var(--primary-color);">Trà Đào Cam Sả</h3>
                 <p style="color: #666; margin: 0.5rem 0;">55.000 VNĐ</p>
             </a>
-            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+            <button class="btn-primary add-to-cart" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
         </div>
 
         <div class="product-card">
@@ -85,9 +67,13 @@
                 <h3 style="color: var(--primary-color);">Bánh Croissant Bơ Tỏi</h3>
                 <p style="color: #666; margin: 0.5rem 0;">35.000 VNĐ</p>
             </a>
-            <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
+            <button class="btn-primary add-to-cart" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

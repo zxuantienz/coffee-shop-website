@@ -6,7 +6,7 @@
     <title>Lịch sử đơn hàng | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .history-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; }
+        .history-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; min-height: 60vh; }
         .order-card { background: #fff; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary-color); }
         .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
         .order-status { color: #28a745; font-weight: bold; }
@@ -21,15 +21,20 @@
         <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="profile.html">Quay lại Hồ sơ</a></li>
                 <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../info/menu.html">Thực đơn</a></li>
+                <li><a href="blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="profile.html" style="color: var(--accent-color);">Hồ sơ</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="history-container">
         <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Lịch Sử Đặt Món</h2>
-
         <div class="order-card">
             <div class="order-header">
                 <div>
@@ -42,9 +47,7 @@
                 <li><span>1x Cà Phê Sữa Đá (Size L, Ít đá)</span> <span>55.000đ</span></li>
                 <li><span>1x Bánh Croissant bơ tỏi</span> <span>35.000đ</span></li>
             </ul>
-            <div class="order-total">
-                Tổng tiền: 90.000 VNĐ
-            </div>
+            <div class="order-total">Tổng tiền: 90.000 VNĐ</div>
         </div>
 
         <div class="order-card" style="border-left-color: var(--accent-color);">
@@ -58,11 +61,13 @@
             <ul class="order-items">
                 <li><span>2x Trà Đào Cam Sả (Size M)</span> <span>110.000đ</span></li>
             </ul>
-            <div class="order-total">
-                Tổng tiền: 110.000 VNĐ
-            </div>
+            <div class="order-total">Tổng tiền: 110.000 VNĐ</div>
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

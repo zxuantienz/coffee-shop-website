@@ -6,7 +6,7 @@
     <title>Hồ sơ của tôi | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .profile-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; }
+        .profile-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; min-height: 60vh; }
         .member-card { background: linear-gradient(135deg, #FFD700, #DAA520); border-radius: 15px; padding: 2rem; color: #fff; box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3); margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .member-info h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         .member-points { text-align: right; }
@@ -24,9 +24,14 @@
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
                 <li><a href="../info/menu.html">Thực đơn</a></li>
-                <li><a href="login.html">Đăng xuất</a></li>
+                <li><a href="blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="login.html" style="color: var(--accent-color);">Đăng xuất</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="profile-container">
@@ -47,9 +52,13 @@
             <a href="#" class="menu-item">Thông tin cá nhân</a>
             <a href="history.html" class="menu-item">Lịch sử đơn hàng</a>
             <a href="#" class="menu-item">Ví Voucher của tôi</a>
-            <a href="#" class="menu-item">Hỗ trợ & Góp ý</a>
+            <a href="../info/contact.html" class="menu-item">Hỗ trợ & Góp ý</a>
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

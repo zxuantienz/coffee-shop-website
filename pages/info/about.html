@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         .about-hero { background: var(--primary-color); color: #fff; text-align: center; padding: 4rem 5%; }
-        .story-section { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 2rem; padding: 0 5%; align-items: center; }
+        .story-section { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 2rem; padding: 0 5%; align-items: center; min-height: 50vh; }
         .story-text { flex: 1; min-width: 300px; }
         .story-image { flex: 1; min-width: 300px; height: 350px; overflow: hidden; border-radius: 10px; }
     </style>
@@ -20,9 +20,14 @@
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
                 <li><a href="menu.html">Thực đơn</a></li>
-                <li><a href="#" style="color: var(--accent-color);">Về chúng tôi</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="about.html" style="color: var(--accent-color);">Về chúng tôi</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <div class="about-hero">
@@ -41,5 +46,9 @@
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

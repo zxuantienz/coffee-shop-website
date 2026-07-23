@@ -6,75 +6,20 @@
     <title>Chi tiết món | Quyết Tiến Coffee</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .product-detail-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 3rem auto;
-            gap: 3rem;
-            padding: 0 5%;
-        }
-        .product-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 15px;
-            height: 400px;
-            overflow: hidden;
-        }
-        .product-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        .product-price {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin: 1rem 0;
-        }
+        .product-detail-container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 3rem; padding: 0 5%; min-height: 50vh;}
+        .product-image { flex: 1; min-width: 300px; border-radius: 15px; height: 400px; overflow: hidden; }
+        .product-info { flex: 1; min-width: 300px; }
+        .product-price { font-size: 1.8rem; color: var(--accent-color); font-weight: bold; margin: 1rem 0; }
         .option-group { margin-bottom: 1.5rem; }
-        .option-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
+        .option-title { font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; }
         .radio-options { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .radio-options label {
-            background: #fff;
-            padding: 0.5rem 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .radio-options input[type="radio"], 
-        .radio-options input[type="checkbox"] { display: none; }
-        .radio-options input:checked + label {
-            border-color: var(--accent-color);
-            background: var(--accent-color);
-            color: #fff;
-        }
+        .radio-options label { background: #fff; padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; transition: all 0.2s; }
+        .radio-options input[type="radio"], .radio-options input[type="checkbox"] { display: none; }
+        .radio-options input:checked + label { border-color: var(--accent-color); background: var(--accent-color); color: #fff; }
         .action-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .quantity-control button {
-            background: none;
-            border: none;
-            padding: 0.5rem 1rem;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-        .quantity-control input {
-            width: 40px;
-            text-align: center;
-            border: none;
-            font-size: 1rem;
-            pointer-events: none;
-        }
+        .quantity-control { display: flex; align-items: center; background: #fff; border-radius: 5px; border: 1px solid #ccc; }
+        .quantity-control button { background: none; border: none; padding: 0.5rem 1rem; font-size: 1.2rem; cursor: pointer; }
+        .quantity-control input { width: 40px; text-align: center; border: none; font-size: 1rem; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -84,9 +29,15 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="cart.html">Giỏ hàng (0)</a></li>
+                <li><a href="../info/menu.html">Thực đơn</a></li>
+                <li><a href="../auth/blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="cart.html">Giỏ hàng</a></li>
+                <li><a href="../auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="product-detail-container">
@@ -103,11 +54,11 @@
                 <div class="option-group">
                     <div class="option-title">Chọn Size</div>
                     <div class="radio-options">
-                        <input type="radio" name="size" id="size-s" checked>
+                        <input type="radio" name="size" id="size-s" value="S" checked>
                         <label for="size-s">Nhỏ (S)</label>
-                        <input type="radio" name="size" id="size-m">
+                        <input type="radio" name="size" id="size-m" value="M">
                         <label for="size-m">Vừa (M) +10k</label>
-                        <input type="radio" name="size" id="size-l">
+                        <input type="radio" name="size" id="size-l" value="L">
                         <label for="size-l">Lớn (L) +15k</label>
                     </div>
                 </div>
@@ -115,11 +66,11 @@
                 <div class="option-group">
                     <div class="option-title">Lượng Đường</div>
                     <div class="radio-options">
-                        <input type="radio" name="sugar" id="sugar-100" checked>
+                        <input type="radio" name="sugar" id="sugar-100" value="100" checked>
                         <label for="sugar-100">100% Đường</label>
-                        <input type="radio" name="sugar" id="sugar-50">
+                        <input type="radio" name="sugar" id="sugar-50" value="50">
                         <label for="sugar-50">50% Đường</label>
-                        <input type="radio" name="sugar" id="sugar-0">
+                        <input type="radio" name="sugar" id="sugar-0" value="0">
                         <label for="sugar-0">Không Đường</label>
                     </div>
                 </div>
@@ -127,9 +78,9 @@
                 <div class="option-group">
                     <div class="option-title">Topping (Thêm hạt)</div>
                     <div class="radio-options">
-                        <input type="checkbox" id="top-tranchau">
+                        <input type="checkbox" name="topping" value="tranchau" id="top-tranchau">
                         <label for="top-tranchau">Trân châu trắng +10k</label>
-                        <input type="checkbox" id="top-kem">
+                        <input type="checkbox" name="topping" value="kem" id="top-kem">
                         <label for="top-kem">Kem Macchiato +15k</label>
                     </div>
                 </div>
@@ -137,14 +88,19 @@
                 <div class="action-buttons">
                     <div class="quantity-control">
                         <button type="button">-</button>
-                        <input type="text" value="1" readonly>
+                        <input type="text" name="quantity" value="1" readonly>
                         <button type="button">+</button>
                     </div>
-                    <button type="submit" class="btn-primary" style="flex: 1;">Thêm vào giỏ hàng</button>
+                    <!-- Nút này vẫn sẽ gọi JS vì có class add-to-cart -->
+                    <button type="submit" class="btn-primary add-to-cart" style="flex: 1;">Thêm vào giỏ hàng</button>
                 </div>
             </form>
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

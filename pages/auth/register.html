@@ -24,9 +24,16 @@
         <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="../../index.html">Về Trang Chủ</a></li>
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../info/menu.html">Thực đơn</a></li>
+                <li><a href="blog.html">Tin tức</a></li>
+                <li><a href="../info/about.html">Về chúng tôi</a></li>
+                <li><a href="../info/contact.html">Liên hệ</a></li>
+                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="login.html" style="color: var(--accent-color);">Tài khoản</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <main class="auth-container">
@@ -35,19 +42,19 @@
             <form action="login.html">
                 <div class="input-group">
                     <label for="fullname">Họ và Tên</label>
-                    <input type="text" id="fullname" placeholder="Nhập họ và tên của bạn" required>
+                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên của bạn" required>
                 </div>
                 <div class="input-group">
                     <label for="reg-phone">Số điện thoại / Email</label>
-                    <input type="text" id="reg-phone" placeholder="Nhập số điện thoại" required>
+                    <input type="text" id="reg-phone" name="contact" placeholder="Nhập số điện thoại" required>
                 </div>
                 <div class="input-group">
                     <label for="reg-password">Mật khẩu</label>
-                    <input type="password" id="reg-password" placeholder="Tạo mật khẩu" required>
+                    <input type="password" id="reg-password" name="password" placeholder="Tạo mật khẩu" required>
                 </div>
                 <div class="input-group">
                     <label for="confirm-password">Xác nhận mật khẩu</label>
-                    <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" required>
+                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
                 </div>
                 <button type="submit" class="btn-primary btn-full">Đăng Ký</button>
             </form>
@@ -58,5 +65,9 @@
         </div>
     </main>
 
+    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: auto;">
+        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>
