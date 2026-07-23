@@ -13,6 +13,8 @@ Dự án thiết kế giao diện website thương mại điện tử ngành F&B
 | :--- | :--- | :--- | :--- | :--- |
 | **Đoàn Xuân Tiến** | 2374902010493 | Công nghệ thông tin | Quản lý File Báo cáo Word. Thiết kế luồng User Flow (Login, Profile, Order History, Blog). Tìm kiếm tài nguyên. | `doan-xuan-tien` |
 | **-Nguyễn Trương Xuân Phước** | 2474802010322 | Công nghệ thông tin | Thiết lập Figma Design System. Code luồng Khám phá (Trang Chủ, Thực đơn, Giới thiệu, Liên hệ). | `xuan-phuoc` |
+| **Đoàn Xuân Tiến** | 2374802010493 | Công nghệ thông tin | Quản lý File Báo cáo Word. Thiết kế luồng User Flow (Login, Profile, Order History, Blog). Tìm kiếm tài nguyên. | `doan-xuan-tien` |
+| **Xuân Phước** | 2474802010322 | Công nghệ thông tin | Thiết lập Figma Design System. Code luồng Khám phá (Trang Chủ, Thực đơn, Giới thiệu, Liên hệ). | `xuan-phuoc` |
 | **Võ Thanh Danh** | 2374802010064 | Công nghệ thông tin | Thiết lập Prototype. Code luồng Mua hàng (Chi tiết SP, Giỏ hàng, Checkout, Success). | `thanh-danh` |
 
 ## 🛠 Công nghệ & Công cụ sử dụng
