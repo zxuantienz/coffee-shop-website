@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Tin tức | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Lịch sử đơn hàng | Quyết Tiến Coffee</title>
+    <!-- Đã sửa đường dẫn CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        .blog-header { text-align: center; padding: 3rem 5%; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; padding: 0 5%; }
-        .blog-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .blog-card:hover { transform: translateY(-5px); }
-        .blog-img { width: 100%; height: 200px; object-fit: cover; }
-        .blog-content { padding: 1.5rem; }
-        .blog-tag { background: var(--accent-color); color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-bottom: 1rem; }
+        .history-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; min-height: 60vh; }
+        .order-card { background: #fff; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary-color); }
+        .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+        .order-status { color: var(--accent-color); font-weight: bold; }
+        .order-items { list-style: none; margin-bottom: 1rem; }
+        .order-items li { display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #555; }
+        .order-total { text-align: right; font-size: 1.2rem; font-weight: bold; color: var(--accent-color); }
     </style>
 </head>
 <body>
@@ -23,79 +24,30 @@
             <ul class="nav-links">
                 <li><a href="/index.html">Trang chủ</a></li>
                 <li><a href="/pages/info/menu.html">Thực đơn</a></li>
-                <li><a href="/pages/auth/blog.html" style="color: var(--accent-color);">Tin tức</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
                 <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
                 <li><a href="/pages/info/contact.html">Liên hệ</a></li>
                 <li><a href="/pages/shop/cart.html">Giỏ hàng <span class="cart-badge">0</span></a></li>
-                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
+                <li><a href="/pages/auth/profile.html" style="color: var(--accent-color);">Hồ sơ</a></li>
             </ul>
         </nav>
         <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
-    <div class="blog-header">
-        <h1 style="color: var(--primary-color);">Góc Chia Sẻ & Khuyến Mãi</h1>
-        <p style="color: #666; margin-top: 0.5rem;">Khám phá kiến thức về cà phê và không bỏ lỡ các ưu đãi hấp dẫn.</p>
-    </div>
-
-    <main class="blog-grid">
-        <article class="blog-card">
-            <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=600&q=80" alt="Hạt Cà Phê" class="blog-img">
-            <div class="blog-content">
-                <span class="blog-tag">Kiến thức</span>
-                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phân biệt cà phê Arabica và Robusta</h3>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Bạn có biết sự khác biệt giữa hai loại hạt cà phê phổ biến nhất thế giới này nằm ở đâu không? Cùng tìm hiểu nhé!</p>
-                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=600&q=80" alt="Khuyến mãi" class="blog-img">
-            <div class="blog-content">
-                <span class="blog-tag" style="background: #28a745;">Khuyến mãi</span>
-                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Giảm giá 20% cho thành viên Hạng Vàng</h3>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Chương trình tri ân đặc biệt dành riêng cho các thành viên thân thiết trong tháng này. Đừng bỏ lỡ!</p>
-                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp →</a>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?auto=format&fit=crop&w=600&q=80" alt="Máy Espresso" class="blog-img">
-            <div class="blog-content">
-                <span class="blog-tag">Trải nghiệm</span>
-                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Nghệ thuật pha chế Espresso hoàn hảo</h3>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Khám phá quy trình chiết xuất để có một lớp Crema tuyệt đẹp trên bề mặt ly Espresso của bạn.</p>
-                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp →</a>
-            </div>
-        </article>
+    <main class="history-container">
+        <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Lịch Sử Đặt Món</h2>
+        
+        <!-- NƠI JS ĐỔ DỮ LIỆU ĐƠN HÀNG THẬT VÀO -->
+        <div id="order-history-container">
+            <p style="text-align: center; color: #888;">Đang tải lịch sử đơn hàng...</p>
+        </div>
     </main>
 
     <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
-                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
-                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
-                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
-                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
-                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
-                </ul>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
-                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
-                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
-            © 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
-        </div>
+        <div style="text-align: center; font-size: 0.8rem;">&copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.</div>
     </footer>
-    <script src="/assets/js/main.js"></script>
+    
+    <!-- Đã sửa đường dẫn JS -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

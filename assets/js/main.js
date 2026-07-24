@@ -6,7 +6,7 @@ const products = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateCartBadge(); // Cập nhật số lượng trên icon giỏ hàng ngay khi load trang
+    updateCartBadge();
 
     // 2. TOGGLE MENU MOBILE
     const menuToggle = document.querySelector('.menu-toggle');
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = products.find(p => p.id === productId);
 
         if (!product) {
-            // Xử lý lỗi nếu gõ ID bậy bạ trên URL
             document.querySelector('.product-info').innerHTML = `
                 <h1 style="color: red;">Không tìm thấy sản phẩm!</h1>
                 <p>Sản phẩm bạn tìm kiếm không tồn tại hoặc đã bị xóa.</p>
@@ -35,11 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('detail-name').textContent = product.name;
             document.getElementById('detail-price').textContent = product.price.toLocaleString() + ' VNĐ';
             document.getElementById('detail-desc').textContent = product.desc;
-            
-            // Lưu data-id vào form để lúc submit biết thêm món nào
             document.getElementById('add-to-cart-form').setAttribute('data-id', product.id);
 
-            // Ẩn tùy chọn Size/Đường nếu là bánh
             if (product.type === 'food') {
                 document.querySelectorAll('.drink-only-option').forEach(opt => opt.style.display = 'none');
             }
@@ -66,19 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. NÚT TĂNG GIẢM SỐ LƯỢNG (Dùng chung cho Chi tiết & Giỏ hàng)
+    // 5. NÚT TĂNG GIẢM SỐ LƯỢNG (Chỉ dùng cho Trang Chi Tiết Món)
+    // Trang Giỏ hàng sẽ dùng hàm riêng updateCartQty() để update LocalStorage trực tiếp
     document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('btn-minus')) {
+        if (e.target.classList.contains('btn-minus') && !e.target.classList.contains('cart-qty-btn')) {
             const input = e.target.nextElementSibling;
             if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
         }
-        if (e.target.classList.contains('btn-plus')) {
+        if (e.target.classList.contains('btn-plus') && !e.target.classList.contains('cart-qty-btn')) {
             const input = e.target.previousElementSibling;
             input.value = parseInt(input.value) + 1;
         }
     });
 
-    // 6. THÊM VÀO GIỎ HÀNG (Lưu LocalStorage & Hiện Toast UX)
+    // 6. THÊM VÀO GIỎ HÀNG (Logic Topping, Đường, Size & Gộp Món)
     const detailForm = document.getElementById('add-to-cart-form');
     if (detailForm) {
         detailForm.addEventListener('submit', (e) => {
@@ -87,24 +84,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const product = products.find(p => p.id === pId);
             const qty = parseInt(detailForm.querySelector('input[name="quantity"]').value);
             
-            // Lấy options (nếu có)
-            let size = product.type === 'drink' ? document.querySelector('input[name="size"]:checked').value : '';
-            let extraPrice = size === 'M' ? 10000 : (size === 'L' ? 15000 : 0);
+            let size = '';
+            let sugar = '';
+            let toppings = [];
+            let extraPrice = 0;
+
+            if (product.type === 'drink') {
+                size = document.querySelector('input[name="size"]:checked').value;
+                sugar = document.querySelector('input[name="sugar"]:checked').value;
+                
+                extraPrice += (size === 'M' ? 10000 : (size === 'L' ? 15000 : 0));
+
+                document.querySelectorAll('input[name="topping"]:checked').forEach(cb => {
+                    let label = cb.nextElementSibling.textContent.split(' +')[0];
+                    toppings.push(label);
+                    extraPrice += (cb.value === 'tranchau' ? 10000 : (cb.value === 'kem' ? 15000 : 0));
+                });
+            }
             
             const cartItem = {
-                id: Date.now(), // ID duy nhất cho giỏ hàng
                 productId: product.id,
                 name: product.name,
                 img: product.img,
                 qty: qty,
                 size: size,
+                sugar: sugar,
+                toppings: toppings,
                 price: product.price + extraPrice
             };
 
             let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
-            cart.push(cartItem);
-            localStorage.setItem('qt_cart', JSON.stringify(cart));
             
+            // TÌM XEM MÓN Y HỆT ĐÃ CÓ TRONG GIỎ CHƯA (Gộp Số Lượng)
+            let existingIndex = cart.findIndex(item => 
+                item.productId === cartItem.productId && 
+                item.size === cartItem.size && 
+                item.sugar === cartItem.sugar && 
+                JSON.stringify(item.toppings) === JSON.stringify(cartItem.toppings)
+            );
+
+            if (existingIndex !== -1) {
+                cart[existingIndex].qty += cartItem.qty; // Cộng dồn số lượng
+            } else {
+                cart.push(cartItem); // Thêm dòng mới
+            }
+
+            localStorage.setItem('qt_cart', JSON.stringify(cart));
             updateCartBadge();
             showToast(`Đã thêm ${qty} ${product.name} vào giỏ!`);
         });
@@ -116,55 +141,23 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const pId = btn.getAttribute('data-id');
             const product = products.find(p => p.id === pId);
-            
             let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
-            cart.push({ id: Date.now(), productId: product.id, name: product.name, img: product.img, qty: 1, size: 'S', price: product.price });
-            localStorage.setItem('qt_cart', JSON.stringify(cart));
             
+            let existingIndex = cart.findIndex(item => item.productId === product.id && !item.size); // Mua nhanh = mặc định không size/đường
+            if(existingIndex !== -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({ productId: product.id, name: product.name, img: product.img, qty: 1, size: 'S', sugar: '100', toppings: [], price: product.price });
+            }
+            
+            localStorage.setItem('qt_cart', JSON.stringify(cart));
             updateCartBadge();
             showToast(`Đã thêm ${product.name} vào giỏ!`);
         });
     });
 
-    // 7. RENDER GIỎ HÀNG (cart.html)
-    const cartContainer = document.getElementById('cart-items-container');
-    if (cartContainer) {
-        let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
-        let total = 0;
-        cartContainer.innerHTML = '';
-        
-        if (cart.length === 0) {
-            cartContainer.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem;">Giỏ hàng của bạn đang trống!</td></tr>';
-            document.getElementById('cart-total-price').textContent = '0 VNĐ';
-            document.getElementById('checkout-btn').style.pointerEvents = 'none';
-            document.getElementById('checkout-btn').style.opacity = '0.5';
-        } else {
-            cart.forEach((item, index) => {
-                let itemTotal = item.price * item.qty;
-                total += itemTotal;
-                let sizeText = item.size ? `Size ${item.size}` : '';
-                
-                cartContainer.innerHTML += `
-                    <tr>
-                        <td data-label="Sản phẩm">
-                            <div class="item-info">
-                                <img src="${item.img}" class="item-img">
-                                <div>
-                                    <strong>${item.name}</strong><br>
-                                    <span style="font-size: 0.85rem; color: #888;">${sizeText}</span><br>
-                                    <button onclick="removeCartItem(${index})" style="color: red; background: none; border: none; font-size: 0.8rem; cursor: pointer; margin-top: 5px;">Xóa</button>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-label="Đơn giá">${item.price.toLocaleString()}đ</td>
-                        <td data-label="Số lượng">${item.qty}</td>
-                        <td data-label="Thành tiền" style="color: var(--accent-color); font-weight: bold;">${itemTotal.toLocaleString()}đ</td>
-                    </tr>
-                `;
-            });
-            document.getElementById('cart-total-price').textContent = total.toLocaleString() + ' VNĐ';
-        }
-    }
+    // 7. RENDER GIỎ HÀNG THỰC SỰ (cart.html)
+    renderCartPage();
 
     // 8. RENDER THANH TOÁN (checkout.html)
     const checkoutSummary = document.getElementById('checkout-summary-items');
@@ -176,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             total += (item.price * item.qty);
             checkoutSummary.innerHTML += `
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>${item.qty}x ${item.name} ${item.size ? '(Size '+item.size+')' : ''}</span>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    <span>${item.qty}x ${item.name} ${item.size ? '('+item.size+')' : ''}</span>
                     <strong>${(item.price * item.qty).toLocaleString()}đ</strong>
                 </div>
             `;
@@ -188,17 +181,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('checkout-shipping').textContent = shipping.toLocaleString() + 'đ';
         document.getElementById('checkout-final-total').textContent = (total + shipping).toLocaleString() + ' VNĐ';
 
-        // Xử lý khi nhấn nút Đặt hàng
+        // Ghi nhận Đơn Hàng Thật sự
         const checkoutForm = document.getElementById('checkout-form');
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if(cart.length === 0) return alert('Giỏ hàng trống!');
             
-            // Tạo mã đơn hàng random
             const orderId = '#QT' + Math.floor(1000 + Math.random() * 9000);
-            localStorage.setItem('qt_last_order', orderId); // Lưu lại để success.html đọc
+            const now = new Date();
+            const dateStr = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} - ${now.getHours()}:${now.getMinutes()}`;
+
+            const newOrder = {
+                id: orderId,
+                date: dateStr,
+                items: cart,
+                total: total + shipping,
+                status: 'Đang pha chế'
+            };
+
+            // Lưu vào mảng Lịch Sử Đơn Hàng
+            let orders = JSON.parse(localStorage.getItem('qt_orders')) || [];
+            orders.unshift(newOrder); // Đẩy lên đầu mảng
+            localStorage.setItem('qt_orders', JSON.stringify(orders));
+            
+            localStorage.setItem('qt_last_order', orderId); // Để success.html biết vừa đặt mã gì
             localStorage.removeItem('qt_cart'); // Xóa giỏ hàng
-            window.location.href = '/pages/shop/success.html'; // Chuyển trang
+            window.location.href = '/pages/shop/success.html';
         });
     }
 
@@ -208,9 +216,110 @@ document.addEventListener('DOMContentLoaded', () => {
         const lastOrder = localStorage.getItem('qt_last_order') || '#QT0000';
         orderCodeElement.textContent = 'Mã đơn hàng: ' + lastOrder;
     }
+
+    // 10. RENDER LỊCH SỬ ĐƠN HÀNG (history.html)
+    const historyContainer = document.getElementById('order-history-container');
+    if (historyContainer) {
+        let orders = JSON.parse(localStorage.getItem('qt_orders')) || [];
+        historyContainer.innerHTML = '';
+
+        if (orders.length === 0) {
+            historyContainer.innerHTML = '<p style="text-align: center; color: #888;">Bạn chưa có đơn hàng nào.</p>';
+        } else {
+            orders.forEach(order => {
+                let itemsHTML = '';
+                order.items.forEach(item => {
+                    let optText = [];
+                    if(item.size) optText.push(item.size);
+                    if(item.sugar) optText.push(`${item.sugar}% Đường`);
+                    if(item.toppings && item.toppings.length > 0) optText.push(item.toppings.join(', '));
+                    let optString = optText.length > 0 ? ` (${optText.join(' - ')})` : '';
+
+                    itemsHTML += `<li><span>${item.qty}x ${item.name} <span style="font-size:0.8rem; color:#888;">${optString}</span></span> <span>${(item.price * item.qty).toLocaleString()}đ</span></li>`;
+                });
+
+                // Luôn có phí ship 15k trong mỗi đơn
+                itemsHTML += `<li><span>Phí vận chuyển</span> <span>15.000đ</span></li>`;
+
+                historyContainer.innerHTML += `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <strong>Mã đơn: ${order.id}</strong>
+                                <p style="font-size: 0.9rem; color: #888;">${order.date}</p>
+                            </div>
+                            <div class="order-status">${order.status}</div>
+                        </div>
+                        <ul class="order-items">
+                            ${itemsHTML}
+                        </ul>
+                        <div class="order-total">Tổng tiền: ${order.total.toLocaleString()} VNĐ</div>
+                    </div>
+                `;
+            });
+        }
+    }
 });
 
-// Hàm hỗ trợ: Cập nhật Badge trên Header
+/* ==============================================
+   CÁC HÀM HỖ TRỢ BÊN NGOÀI
+   ============================================== */
+
+function renderCartPage() {
+    const cartContainer = document.getElementById('cart-items-container');
+    if (!cartContainer) return;
+
+    let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
+    let total = 0;
+    cartContainer.innerHTML = '';
+    
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem;">Giỏ hàng của bạn đang trống!</td></tr>';
+        document.getElementById('cart-total-price').textContent = '0 VNĐ';
+        document.getElementById('checkout-btn').style.pointerEvents = 'none';
+        document.getElementById('checkout-btn').style.opacity = '0.5';
+    } else {
+        cart.forEach((item, index) => {
+            let itemTotal = item.price * item.qty;
+            total += itemTotal;
+            
+            // Xử lý chuỗi Option (Size, Đường, Topping) hiển thị ra giỏ hàng
+            let optText = [];
+            if(item.size) optText.push(`Size ${item.size}`);
+            if(item.sugar) optText.push(`${item.sugar}% Đường`);
+            if(item.toppings && item.toppings.length > 0) optText.push(item.toppings.join(', '));
+            let detailString = optText.join(' | ');
+
+            cartContainer.innerHTML += `
+                <tr>
+                    <td data-label="Sản phẩm">
+                        <div class="item-info">
+                            <img src="${item.img}" class="item-img">
+                            <div>
+                                <strong>${item.name}</strong><br>
+                                <span style="font-size: 0.8rem; color: #888;">${detailString}</span><br>
+                                <button onclick="removeCartItem(${index})" style="color: red; background: none; border: none; font-size: 0.8rem; cursor: pointer; margin-top: 5px;">Xóa</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-label="Đơn giá">${item.price.toLocaleString()}đ</td>
+                    <td data-label="Số lượng">
+                        <div class="quantity-control" style="display: inline-flex; border: 1px solid #ccc; border-radius: 5px; height: 30px;">
+                            <button onclick="updateCartQty(${index}, -1)" class="cart-qty-btn" style="border: none; padding: 0 10px; cursor:pointer;">-</button>
+                            <input type="text" value="${item.qty}" readonly style="width: 30px; text-align: center; border: none; background: transparent;">
+                            <button onclick="updateCartQty(${index}, 1)" class="cart-qty-btn" style="border: none; padding: 0 10px; cursor:pointer;">+</button>
+                        </div>
+                    </td>
+                    <td data-label="Thành tiền" style="color: var(--accent-color); font-weight: bold;">${itemTotal.toLocaleString()}đ</td>
+                </tr>
+            `;
+        });
+        document.getElementById('cart-total-price').textContent = total.toLocaleString() + ' VNĐ';
+        document.getElementById('checkout-btn').style.pointerEvents = 'auto';
+        document.getElementById('checkout-btn').style.opacity = '1';
+    }
+}
+
 function updateCartBadge() {
     let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
     let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -221,7 +330,6 @@ function updateCartBadge() {
     });
 }
 
-// Hàm hỗ trợ: Hiển thị Toast mượt mà
 function showToast(message) {
     const existing = document.querySelector('.toast-msg');
     if (existing) existing.remove();
@@ -235,13 +343,23 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
-    }, 3000);
+    }, 2500);
 }
 
-// Hàm hỗ trợ: Xóa món ở giỏ hàng
 window.removeCartItem = function(index) {
     let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
     cart.splice(index, 1);
     localStorage.setItem('qt_cart', JSON.stringify(cart));
-    location.reload(); // Tải lại trang để update
+    renderCartPage();
+    updateCartBadge();
+};
+
+window.updateCartQty = function(index, change) {
+    let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
+    if (cart[index].qty + change > 0) {
+        cart[index].qty += change;
+        localStorage.setItem('qt_cart', JSON.stringify(cart));
+        renderCartPage();
+        updateCartBadge();
+    }
 };

@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thực đơn | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-        .menu-header { text-align: center; padding: 3rem 5%; background: var(--primary-color); color: #fff; }
-        .category-filter { display: flex; justify-content: center; gap: 1rem; padding: 2rem 5%; flex-wrap: wrap; }
-        .filter-btn { background: #fff; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 0.5rem 1.5rem; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: #fff; }
-    </style>
+    <!-- Đã sửa đường dẫn CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
 
@@ -30,16 +25,16 @@
         <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
-    <div class="menu-header">
+    <div class="menu-header" style="text-align: center; padding: 3rem 5%; background: var(--primary-color); color: #fff;">
         <h1 style="color: var(--accent-color);">Thực Đơn Của Chúng Tôi</h1>
         <p>Hương vị nguyên bản, đánh thức mọi giác quan</p>
     </div>
 
-    <div class="category-filter">
-        <button class="filter-btn active" data-filter="all">Tất cả</button>
-        <button class="filter-btn" data-filter="coffee">Cà Phê</button>
-        <button class="filter-btn" data-filter="tea">Trà Trái Cây</button>
-        <button class="filter-btn" data-filter="bakery">Bánh Ngọt</button>
+    <div class="category-filter" style="display: flex; justify-content: center; gap: 1rem; padding: 2rem 5%; flex-wrap: wrap;">
+        <button class="filter-btn btn-primary active" data-filter="all">Tất cả</button>
+        <button class="filter-btn btn-primary" data-filter="coffee" style="background:#fff; color:var(--primary-color); border:1px solid var(--primary-color);">Cà Phê</button>
+        <button class="filter-btn btn-primary" data-filter="tea" style="background:#fff; color:var(--primary-color); border:1px solid var(--primary-color);">Trà Trái Cây</button>
+        <button class="filter-btn btn-primary" data-filter="bakery" style="background:#fff; color:var(--primary-color); border:1px solid var(--primary-color);">Bánh Ngọt</button>
     </div>
 
     <main class="product-grid">
@@ -72,31 +67,12 @@
     </main>
 
     <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
-                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
-                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
-                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
-                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
-                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
-                </ul>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
-                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
-                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+        <div style="text-align: center; font-size: 0.8rem;">
             &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
         </div>
     </footer>
-    <script src="/assets/js/main.js"></script>
+    
+    <!-- Đã sửa đường dẫn JS -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>
