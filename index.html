@@ -4,59 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quyết Tiến Coffee | Trang Chủ</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
     <header>
-        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="pages/info/menu.html">Thực đơn</a></li>
-                <li><a href="pages/auth/blog.html">Tin tức</a></li>
-                <li><a href="pages/info/about.html">Về chúng tôi</a></li>
-                <li><a href="pages/info/contact.html">Liên hệ</a></li>
-                <li><a href="pages/shop/cart.html">Giỏ hàng</a></li>
-                <li><a href="pages/auth/login.html">Tài khoản</a></li>
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
+                <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
     </header>
 
     <section style="text-align: center; padding: 5rem 5%; background-color: var(--primary-color); color: var(--text-light); background-image: linear-gradient(rgba(74, 46, 27, 0.8), rgba(74, 46, 27, 0.9)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
         <h1 style="color: var(--accent-color); margin-bottom: 1rem; font-size: 2.5rem;">Đậm đà hương vị nguyên bản</h1>
         <p style="margin-bottom: 2rem;">Khám phá bộ sưu tập Cà phê và Trà mới nhất của chúng tôi.</p>
-        <a href="pages/info/menu.html" class="btn-primary">Đặt hàng ngay</a>
+        <a href="/pages/info/menu.html" class="btn-primary">Đặt hàng ngay</a>
     </section>
 
     <main>
         <h2 style="text-align: center; margin-top: 3rem; color: var(--primary-color);">Sản Phẩm Nổi Bật</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Cà Phê Sữa Đá" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 1rem;">
-                <h3 style="color: var(--primary-color);">Cà Phê Sữa Đá</h3>
-                <p style="color: #666; margin: 0.5rem 0;">45.000 VNĐ</p>
-                <button class="btn-primary add-to-cart">Thêm vào giỏ</button>
+                <a href="/pages/shop/product-detail.html?id=1">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Cà Phê Sữa Đá" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">Cà Phê Sữa Đá</h3>
+                    <p style="color: #666; margin: 0.5rem 0;">45.000 VNĐ</p>
+                </a>
+                <button class="btn-primary add-to-cart" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
             </div>
 
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Trà Đào Cam Sả" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 1rem;">
-                <h3 style="color: var(--primary-color);">Trà Đào Cam Sả</h3>
-                <p style="color: #666; margin: 0.5rem 0;">55.000 VNĐ</p>
-                <button class="btn-primary add-to-cart">Thêm vào giỏ</button>
+                <a href="/pages/shop/product-detail.html?id=2">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Trà Đào Cam Sả" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">Trà Đào Cam Sả</h3>
+                    <p style="color: #666; margin: 0.5rem 0;">55.000 VNĐ</p>
+                </a>
+                <button class="btn-primary add-to-cart" style="width: 100%; margin-top: 1rem;">Thêm vào giỏ</button>
             </div>
         </div>
     </main>
 
-    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
-        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
+                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
+                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
+                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
+        </div>
     </footer>
-
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

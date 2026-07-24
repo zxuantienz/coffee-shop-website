@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt hàng thành công | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .success-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center; padding: 2rem 5%; }
         .success-icon { width: 80px; height: 80px; background: #28a745; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 1.5rem; animation: scaleIn 0.5s ease-out; }
@@ -15,16 +15,16 @@
 <body>
 
     <header>
-        <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../info/menu.html">Thực đơn</a></li>
-                <li><a href="../auth/blog.html">Tin tức</a></li>
-                <li><a href="../info/about.html">Về chúng tôi</a></li>
-                <li><a href="../info/contact.html">Liên hệ</a></li>
-                <li><a href="cart.html">Giỏ hàng</a></li>
-                <li><a href="../auth/login.html">Tài khoản</a></li>
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
+                <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
         <div class="menu-toggle"><span></span><span></span><span></span></div>
@@ -35,17 +35,41 @@
         <h1 style="color: var(--primary-color);">Cảm ơn bạn đã đặt hàng!</h1>
         <p style="color: #666; margin-top: 1rem; max-width: 500px;">Đơn hàng của bạn đã được tiếp nhận và đang trong quá trình xử lý. Chúng tôi sẽ giao hàng đến bạn trong thời gian sớm nhất (Dự kiến 20 - 30 phút).</p>
         
-        <div class="order-code">Mã đơn hàng: #QT9942</div>
+        <div class="order-code">Mã đơn hàng: #QT8955</div>
 
         <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
-            <a href="../auth/history.html" class="btn-primary" style="background-color: var(--primary-color);">Theo dõi đơn hàng</a>
-            <a href="../../index.html" class="btn-primary">Về Trang chủ</a>
+            <a href="/pages/auth/history.html" class="btn-primary" style="background-color: var(--primary-color);">Theo dõi đơn hàng</a>
+            <a href="/index.html" class="btn-primary">Về Trang chủ</a>
         </div>
     </main>
 
-    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
-        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <!-- Đã đồng bộ nội dung Footer -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
+                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
+                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
+                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
+        </div>
     </footer>
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết món | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .product-detail-container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 3rem; padding: 0 5%; min-height: 50vh;}
         .product-image { flex: 1; min-width: 300px; border-radius: 15px; height: 400px; overflow: hidden; }
@@ -25,16 +25,16 @@
 <body>
 
     <header>
-        <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../info/menu.html">Thực đơn</a></li>
-                <li><a href="../auth/blog.html">Tin tức</a></li>
-                <li><a href="../info/about.html">Về chúng tôi</a></li>
-                <li><a href="../info/contact.html">Liên hệ</a></li>
-                <li><a href="cart.html">Giỏ hàng</a></li>
-                <li><a href="../auth/login.html">Tài khoản</a></li>
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html" style="color: var(--accent-color);">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
+                <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
         <div class="menu-toggle"><span></span><span></span><span></span></div>
@@ -42,16 +42,17 @@
 
     <main class="product-detail-container">
         <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Cà Phê Sữa Đá" style="width: 100%; height: 100%; object-fit: cover;">
+            <img id="detail-img" src="" alt="Sản phẩm" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
         <div class="product-info">
-            <h1 style="color: var(--primary-color);">Cà Phê Sữa Đá</h1>
-            <div class="product-price">45.000 VNĐ</div>
-            <p style="margin-bottom: 1.5rem; color: #555;">Hương vị cà phê Robusta đậm đà hòa quyện cùng sữa đặc truyền thống, mang lại sự tỉnh táo tức thì.</p>
+            <h1 id="detail-name" style="color: var(--primary-color);">Đang tải thông tin...</h1>
+            <div id="detail-price" class="product-price">... VNĐ</div>
+            <p id="detail-desc" style="margin-bottom: 1.5rem; color: #555;">Vui lòng đợi trong giây lát.</p>
 
-            <form action="cart.html">
-                <div class="option-group">
+            <form action="/pages/shop/cart.html">
+                <!-- Sử dụng class drink-only-option để JS dễ dàng ẩn đi nếu món ăn là bánh ngọt -->
+                <div class="option-group drink-only-option">
                     <div class="option-title">Chọn Size</div>
                     <div class="radio-options">
                         <input type="radio" name="size" id="size-s" value="S" checked>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class="option-group">
+                <div class="option-group drink-only-option">
                     <div class="option-title">Lượng Đường</div>
                     <div class="radio-options">
                         <input type="radio" name="sugar" id="sugar-100" value="100" checked>
@@ -75,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="option-group">
+                <div class="option-group drink-only-option">
                     <div class="option-title">Topping (Thêm hạt)</div>
                     <div class="radio-options">
                         <input type="checkbox" name="topping" value="tranchau" id="top-tranchau">
@@ -87,20 +88,42 @@
 
                 <div class="action-buttons">
                     <div class="quantity-control">
-                        <button type="button">-</button>
+                        <button type="button" class="btn-minus">-</button>
                         <input type="text" name="quantity" value="1" readonly>
-                        <button type="button">+</button>
+                        <button type="button" class="btn-plus">+</button>
                     </div>
-                    <!-- Nút này vẫn sẽ gọi JS vì có class add-to-cart -->
                     <button type="submit" class="btn-primary add-to-cart" style="flex: 1;">Thêm vào giỏ hàng</button>
                 </div>
             </form>
         </div>
     </main>
 
-    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
-        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
+                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
+                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
+                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
+        </div>
     </footer>
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

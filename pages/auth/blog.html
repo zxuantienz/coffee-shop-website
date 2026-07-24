@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog & Tin tức | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .blog-header { text-align: center; padding: 3rem 5%; }
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; padding: 0 5%; }
@@ -18,16 +18,16 @@
 <body>
 
     <header>
-        <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../info/menu.html">Thực đơn</a></li>
-                <li><a href="blog.html" style="color: var(--accent-color);">Tin tức</a></li>
-                <li><a href="../info/about.html">Về chúng tôi</a></li>
-                <li><a href="../info/contact.html">Liên hệ</a></li>
-                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
-                <li><a href="login.html">Tài khoản</a></li>
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html" style="color: var(--accent-color);">Tin tức</a></li>
+                <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
         <div class="menu-toggle"><span></span><span></span><span></span></div>
@@ -45,7 +45,7 @@
                 <span class="blog-tag">Kiến thức</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phân biệt cà phê Arabica và Robusta</h3>
                 <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Bạn có biết sự khác biệt giữa hai loại hạt cà phê phổ biến nhất thế giới này nằm ở đâu không? Cùng tìm hiểu nhé!</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
             </div>
         </article>
 
@@ -55,7 +55,7 @@
                 <span class="blog-tag" style="background: #28a745;">Khuyến mãi</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Giảm giá 20% cho thành viên Hạng Vàng</h3>
                 <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Chương trình tri ân đặc biệt dành riêng cho các thành viên thân thiết trong tháng này. Đừng bỏ lỡ!</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
             </div>
         </article>
 
@@ -65,14 +65,37 @@
                 <span class="blog-tag">Trải nghiệm</span>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Nghệ thuật pha chế Espresso hoàn hảo</h3>
                 <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Khám phá quy trình chiết xuất để có một lớp Crema tuyệt đẹp trên bề mặt ly Espresso của bạn.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
+                <a href="/pages/auth/blog.html" style="color: var(--accent-color); font-weight: bold;">Đọc tiếp &rarr;</a>
             </div>
         </article>
     </main>
 
-    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
-        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
+                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
+                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
+                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
+        </div>
     </footer>
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

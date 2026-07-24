@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Về chúng tôi | Quyết Tiến Coffee</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .about-hero { background: var(--primary-color); color: #fff; text-align: center; padding: 4rem 5%; }
         .story-section { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 3rem auto; gap: 2rem; padding: 0 5%; align-items: center; min-height: 50vh; }
@@ -15,16 +15,16 @@
 <body>
 
     <header>
-        <div class="logo"><a href="../../index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="menu.html">Thực đơn</a></li>
-                <li><a href="../auth/blog.html">Tin tức</a></li>
-                <li><a href="about.html" style="color: var(--accent-color);">Về chúng tôi</a></li>
-                <li><a href="contact.html">Liên hệ</a></li>
-                <li><a href="../shop/cart.html">Giỏ hàng</a></li>
-                <li><a href="../auth/login.html">Tài khoản</a></li>
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
+                <li><a href="/pages/info/about.html" style="color: var(--accent-color);">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
         <div class="menu-toggle"><span></span><span></span><span></span></div>
@@ -46,9 +46,32 @@
         </div>
     </main>
 
-    <footer style="background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 3rem;">
-        <p>&copy; 2026 Quyết Tiến Coffee. Đậm đà hương vị nguyên bản.</p>
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Đậm đà hương vị nguyên bản từ năm 2026.</p>
+                <p style="font-size: 0.9rem;">📍 69/68 Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP.HCM</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Liên Kết Nhanh</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
+                    <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                    <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                    <li><a href="/pages/info/contact.html">Hỗ trợ khách hàng</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Giờ Mở Cửa</h3>
+                <p style="font-size: 0.9rem;">Thứ 2 - Thứ 6: 07:00 - 22:00</p>
+                <p style="font-size: 0.9rem;">Thứ 7 - CN: 07:30 - 23:00</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Hotline: <strong>1900 1234</strong></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.
+        </div>
     </footer>
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>
