@@ -23,7 +23,7 @@
                 <li><a href="/pages/auth/blog.html">Tin tức</a></li>
                 <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
                 <li><a href="/pages/info/contact.html">Liên hệ</a></li>
-                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng <span class="cart-badge">0</span></a></li>
                 <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
@@ -35,7 +35,7 @@
         <h1 style="color: var(--primary-color);">Cảm ơn bạn đã đặt hàng!</h1>
         <p style="color: #666; margin-top: 1rem; max-width: 500px;">Đơn hàng của bạn đã được tiếp nhận và đang trong quá trình xử lý. Chúng tôi sẽ giao hàng đến bạn trong thời gian sớm nhất (Dự kiến 20 - 30 phút).</p>
         
-        <div class="order-code">Mã đơn hàng: #QT8955</div>
+        <div class="order-code" id="success-order-code">Mã đơn hàng: Đang tải...</div>
 
         <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
             <a href="/pages/auth/history.html" class="btn-primary" style="background-color: var(--primary-color);">Theo dõi đơn hàng</a>
@@ -44,7 +44,6 @@
     </main>
 
     <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
-        <!-- Đã đồng bộ nội dung Footer -->
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: 0 auto;">
             <div style="flex: 1; min-width: 250px;">
                 <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quyết Tiến Coffee</h3>

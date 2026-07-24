@@ -35,7 +35,7 @@
                 <li><a href="/pages/auth/blog.html">Tin tức</a></li>
                 <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
                 <li><a href="/pages/info/contact.html">Liên hệ</a></li>
-                <li><a href="/pages/shop/cart.html" style="color: var(--accent-color);">Giỏ hàng</a></li>
+                <li><a href="/pages/shop/cart.html" style="color: var(--accent-color);">Giỏ hàng <span class="cart-badge">0</span></a></li>
                 <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
@@ -54,33 +54,14 @@
                     <th>Thành tiền</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Sản phẩm">
-                        <div class="item-info">
-                            <img src="https://images.unsplash.com/photo-1517701550927-30cfcb64ac45?auto=format&fit=crop&w=150&q=80" alt="Cà Phê Sữa Đá" class="item-img">
-                            <div>
-                                <strong>Cà Phê Sữa Đá</strong><br>
-                                <span style="font-size: 0.85rem; color: #888;">Size M, 50% Đường</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td data-label="Đơn giá">55.000đ</td>
-                    <td data-label="Số lượng">
-                        <div class="quantity-control" style="display: inline-flex; border: 1px solid #ccc; border-radius: 5px;">
-                            <button type="button" class="btn-minus qty-btn" style="border: none;">-</button>
-                            <input type="text" value="1" readonly style="width: 30px; text-align: center; border: none;">
-                            <button type="button" class="btn-plus qty-btn" style="border: none;">+</button>
-                        </div>
-                    </td>
-                    <td data-label="Thành tiền" style="color: var(--accent-color); font-weight: bold;">55.000đ</td>
-                </tr>
+            <!-- Đây là nơi JS sẽ đổ dữ liệu giỏ hàng vào -->
+            <tbody id="cart-items-container">
             </tbody>
         </table>
 
         <div class="cart-summary">
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Tổng cộng: <span style="font-size: 1.5rem; color: var(--accent-color); font-weight: bold;">55.000 VNĐ</span></p>
-            <a href="/pages/shop/checkout.html" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">Tiến hành thanh toán</a>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Tổng cộng: <span id="cart-total-price" style="font-size: 1.5rem; color: var(--accent-color); font-weight: bold;">0 VNĐ</span></p>
+            <a href="/pages/shop/checkout.html" id="checkout-btn" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">Tiến hành thanh toán</a>
         </div>
     </main>
 

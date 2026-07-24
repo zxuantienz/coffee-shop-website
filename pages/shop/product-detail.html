@@ -33,7 +33,7 @@
                 <li><a href="/pages/auth/blog.html">Tin tức</a></li>
                 <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
                 <li><a href="/pages/info/contact.html">Liên hệ</a></li>
-                <li><a href="/pages/shop/cart.html">Giỏ hàng</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng <span class="cart-badge">0</span></a></li>
                 <li><a href="/pages/auth/login.html">Tài khoản</a></li>
             </ul>
         </nav>
@@ -50,8 +50,7 @@
             <div id="detail-price" class="product-price">... VNĐ</div>
             <p id="detail-desc" style="margin-bottom: 1.5rem; color: #555;">Vui lòng đợi trong giây lát.</p>
 
-            <form action="/pages/shop/cart.html">
-                <!-- Sử dụng class drink-only-option để JS dễ dàng ẩn đi nếu món ăn là bánh ngọt -->
+            <form id="add-to-cart-form" data-id="1">
                 <div class="option-group drink-only-option">
                     <div class="option-title">Chọn Size</div>
                     <div class="radio-options">
