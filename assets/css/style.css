@@ -358,3 +358,50 @@ footer a:hover {
   text-decoration: underline;
   opacity: 0.85;
 }
+
+/* =========================================
+   INPUT FOCUS STATE (đồng bộ toàn site)
+   ========================================= */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(255, 138, 0, 0.15);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* =========================================
+   ORDER CARD HOVER (history.html)
+   ========================================= */
+.order-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* =========================================
+   BLOG TAG — pill hoàn toàn
+   ========================================= */
+.blog-tag {
+  border-radius: 999px !important;
+}
+
+/* =========================================
+   QUANTITY CONTROL — hover cho nút +/-
+   ========================================= */
+.quantity-control button {
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border-radius: 6px;
+}
+
+.quantity-control button:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
