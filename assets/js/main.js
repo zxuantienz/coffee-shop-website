@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.product-info').innerHTML = `
                 <h1 style="color: red;">Không tìm thấy sản phẩm!</h1>
                 <p>Sản phẩm bạn tìm kiếm không tồn tại hoặc đã bị xóa.</p>
-                <a href="/pages/info/menu.html" class="btn-primary" style="margin-top: 15px;">Quay lại thực đơn</a>
+                <button onclick="javascript:history.back()" class="btn-primary" style="margin-top: 15px;">Quay lại</button>
             `;
             document.querySelector('.product-image').style.display = 'none';
         } else {
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. NÚT TĂNG GIẢM SỐ LƯỢNG (Chỉ dùng cho Trang Chi Tiết Món)
-    // Trang Giỏ hàng sẽ dùng hàm riêng updateCartQty() để update LocalStorage trực tiếp
     document.body.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-minus') && !e.target.classList.contains('cart-qty-btn')) {
             const input = e.target.nextElementSibling;
@@ -115,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
             
-            // TÌM XEM MÓN Y HỆT ĐÃ CÓ TRONG GIỎ CHƯA (Gộp Số Lượng)
             let existingIndex = cart.findIndex(item => 
                 item.productId === cartItem.productId && 
                 item.size === cartItem.size && 
@@ -124,9 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
             );
 
             if (existingIndex !== -1) {
-                cart[existingIndex].qty += cartItem.qty; // Cộng dồn số lượng
+                cart[existingIndex].qty += cartItem.qty; 
             } else {
-                cart.push(cartItem); // Thêm dòng mới
+                cart.push(cartItem); 
             }
 
             localStorage.setItem('qt_cart', JSON.stringify(cart));
@@ -142,12 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const pId = btn.getAttribute('data-id');
             const product = products.find(p => p.id === pId);
             let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
-            
-            let existingIndex = cart.findIndex(item => item.productId === product.id && !item.size); // Mua nhanh = mặc định không size/đường
+
+            const quickSize = product.type === 'drink' ? 'S' : '';
+            const quickSugar = product.type === 'drink' ? '100' : '';
+
+            let existingIndex = cart.findIndex(item =>
+                item.productId === product.id &&
+                item.size === quickSize &&
+                item.sugar === quickSugar &&
+                (!item.toppings || item.toppings.length === 0)
+            );
             if(existingIndex !== -1) {
                 cart[existingIndex].qty += 1;
             } else {
-                cart.push({ productId: product.id, name: product.name, img: product.img, qty: 1, size: 'S', sugar: '100', toppings: [], price: product.price });
+                cart.push({ productId: product.id, name: product.name, img: product.img, qty: 1, size: quickSize, sugar: quickSugar, toppings: [], price: product.price });
             }
             
             localStorage.setItem('qt_cart', JSON.stringify(cart));
@@ -156,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. RENDER GIỎ HÀNG THỰC SỰ (cart.html)
+    // 7. RENDER GIỎ HÀNG THỰC SỰ
     renderCartPage();
 
     // 8. RENDER THANH TOÁN (checkout.html)
@@ -181,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('checkout-shipping').textContent = shipping.toLocaleString() + 'đ';
         document.getElementById('checkout-final-total').textContent = (total + shipping).toLocaleString() + ' VNĐ';
 
-        // Ghi nhận Đơn Hàng Thật sự
         const checkoutForm = document.getElementById('checkout-form');
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -199,14 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 status: 'Đang pha chế'
             };
 
-            // Lưu vào mảng Lịch Sử Đơn Hàng
             let orders = JSON.parse(localStorage.getItem('qt_orders')) || [];
-            orders.unshift(newOrder); // Đẩy lên đầu mảng
+            orders.unshift(newOrder);
             localStorage.setItem('qt_orders', JSON.stringify(orders));
             
-            localStorage.setItem('qt_last_order', orderId); // Để success.html biết vừa đặt mã gì
-            localStorage.removeItem('qt_cart'); // Xóa giỏ hàng
-            window.location.href = '/pages/shop/success.html';
+            localStorage.setItem('qt_last_order', orderId); 
+            localStorage.removeItem('qt_cart'); 
+            
+            // SỬA THÀNH ĐƯỜNG DẪN TƯƠNG ĐỐI ĐỂ KHÔNG BỊ LỖI TRÊN NETLIFY
+            window.location.href = 'success.html';
         });
     }
 
@@ -238,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemsHTML += `<li><span>${item.qty}x ${item.name} <span style="font-size:0.8rem; color:#888;">${optString}</span></span> <span>${(item.price * item.qty).toLocaleString()}đ</span></li>`;
                 });
 
-                // Luôn có phí ship 15k trong mỗi đơn
                 itemsHTML += `<li><span>Phí vận chuyển</span> <span>15.000đ</span></li>`;
 
                 historyContainer.innerHTML += `
@@ -259,6 +264,70 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ==========================================================
+    // 11. XỬ LÝ FORM LIÊN HỆ (Không chuyển trang, hiện Toast)
+    // ==========================================================
+    const contactForm = document.querySelector('.contact-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            showToast('Cảm ơn bạn! Chúng tôi đã ghi nhận góp ý và sẽ phản hồi sớm.');
+            contactForm.reset(); 
+        });
+    }
+
+    // ==========================================================
+    // 12. GIẢ LẬP ĐĂNG NHẬP / ĐĂNG KÝ / ĐĂNG XUẤT (Session)
+    // ==========================================================
+    const registerForm = document.querySelector('.auth-box form[action*="login.html"]');
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Đăng ký thành công! Đang chuyển đến Đăng nhập...');
+            setTimeout(() => { window.location.href = 'login.html'; }, 1500); 
+        });
+    }
+
+    const loginForm = document.querySelector('.auth-box form[action*="profile.html"]');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const phoneInput = document.getElementById('phone') ? document.getElementById('phone').value : 'User';
+            localStorage.setItem('qt_user', JSON.stringify({ isLoggedIn: true, phone: phoneInput }));
+            showToast('Đăng nhập thành công!');
+            setTimeout(() => { window.location.href = 'profile.html'; }, 1500);
+        });
+    }
+
+    // Đồng bộ Header Navigation dựa trên trạng thái Đăng nhập
+    const currentUser = JSON.parse(localStorage.getItem('qt_user'));
+    const navLists = document.querySelectorAll('.nav-links');
+    const isAtRoot = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+    
+    navLists.forEach(ul => {
+        const lastLi = ul.lastElementChild;
+        if (currentUser && currentUser.isLoggedIn) {
+            const profileLink = isAtRoot ? './pages/auth/profile.html' : '../../pages/auth/profile.html';
+            lastLi.innerHTML = `<a href="${profileLink}" style="color: var(--accent-color);">Hồ sơ</a>`;
+            
+            if (!ul.querySelector('.logout-btn')) {
+                const logoutLi = document.createElement('li');
+                logoutLi.innerHTML = `<a href="#" class="logout-btn">Đăng xuất</a>`;
+                ul.appendChild(logoutLi);
+            }
+        }
+    });
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target.classList.contains('logout-btn')) {
+            e.preventDefault();
+            localStorage.removeItem('qt_user'); 
+            showToast('Đã đăng xuất tài khoản!');
+            const homeLink = isAtRoot ? './index.html' : '../../index.html';
+            setTimeout(() => { window.location.href = homeLink; }, 1500);
+        }
+    });
 });
 
 /* ==============================================
@@ -283,7 +352,6 @@ function renderCartPage() {
             let itemTotal = item.price * item.qty;
             total += itemTotal;
             
-            // Xử lý chuỗi Option (Size, Đường, Topping) hiển thị ra giỏ hàng
             let optText = [];
             if(item.size) optText.push(`Size ${item.size}`);
             if(item.sugar) optText.push(`${item.sugar}% Đường`);
