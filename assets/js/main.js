@@ -8,6 +8,26 @@ const products = [
 document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
 
+    // ==========================================================
+    // 0. AUTH GUARD (Bảo vệ các route nhạy cảm)
+    // ==========================================================
+    const currentUser = JSON.parse(localStorage.getItem('qt_user'));
+    const currentPage = window.location.pathname;
+    const protectedPages = ['profile.html', 'history.html', 'checkout.html'];
+    const isProtected = protectedPages.some(page => currentPage.includes(page));
+
+    if (isProtected && (!currentUser || !currentUser.isLoggedIn)) {
+        showToast('Vui lòng đăng nhập để truy cập!');
+        setTimeout(() => {
+            if (currentPage.includes('checkout.html')) {
+                window.location.href = '../auth/login.html'; // Nếu đứng ở shop/
+            } else {
+                window.location.href = 'login.html'; // Nếu đứng ở auth/
+            }
+        }, 1500);
+        return; // Dừng render nếu chưa đăng nhập
+    }
+
     // 2. TOGGLE MENU MOBILE
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -62,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. NÚT TĂNG GIẢM SỐ LƯỢNG (Chỉ dùng cho Trang Chi Tiết Món)
+    // 5. NÚT TĂNG GIẢM SỐ LƯỢNG (Dùng cho Trang Chi Tiết)
     document.body.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-minus') && !e.target.classList.contains('cart-qty-btn')) {
             const input = e.target.nextElementSibling;
@@ -162,10 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. RENDER GIỎ HÀNG THỰC SỰ
+    // 7. RENDER GIỎ HÀNG
     renderCartPage();
 
-    // 8. RENDER THANH TOÁN (checkout.html)
+    // 8. RENDER THANH TOÁN & GHI NHẬN ĐƠN HÀNG (checkout.html)
     const checkoutSummary = document.getElementById('checkout-summary-items');
     if (checkoutSummary) {
         let cart = JSON.parse(localStorage.getItem('qt_cart')) || [];
@@ -192,6 +212,12 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             if(cart.length === 0) return alert('Giỏ hàng trống!');
             
+            // Lấy thông tin giao hàng
+            const customerName = document.getElementById('fullname').value;
+            const customerPhone = document.getElementById('phone').value;
+            const customerAddress = document.getElementById('address').value;
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
             const orderId = '#QT' + Math.floor(1000 + Math.random() * 9000);
             const now = new Date();
             const dateStr = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} - ${now.getHours()}:${now.getMinutes()}`;
@@ -199,6 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const newOrder = {
                 id: orderId,
                 date: dateStr,
+                customer: {
+                    name: customerName,
+                    phone: customerPhone,
+                    address: customerAddress,
+                    payment: paymentMethod
+                },
                 items: cart,
                 total: total + shipping,
                 status: 'Đang pha chế'
@@ -210,8 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             localStorage.setItem('qt_last_order', orderId); 
             localStorage.removeItem('qt_cart'); 
-            
-            // SỬA THÀNH ĐƯỜNG DẪN TƯƠNG ĐỐI ĐỂ KHÔNG BỊ LỖI TRÊN NETLIFY
             window.location.href = 'success.html';
         });
     }
@@ -246,6 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 itemsHTML += `<li><span>Phí vận chuyển</span> <span>15.000đ</span></li>`;
 
+                let paymentText = 'Tiền mặt (COD)';
+                if (order.customer?.payment === 'momo') paymentText = 'Ví MoMo';
+                if (order.customer?.payment === 'vnpay') paymentText = 'VNPay / Thẻ NH';
+
                 historyContainer.innerHTML += `
                     <div class="order-card">
                         <div class="order-header">
@@ -255,6 +289,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <div class="order-status">${order.status}</div>
                         </div>
+                        
+                        <div style="font-size: 0.9rem; color: #444; margin-bottom: 1rem; padding: 0.8rem; background: #f9f6f0; border-radius: 5px; border-left: 3px solid var(--accent-color);">
+                            <strong>Giao đến:</strong> ${order.customer?.name || 'Khách hàng'} - ${order.customer?.phone || ''}<br>
+                            <strong>Địa chỉ:</strong> ${order.customer?.address || 'Nhận tại cửa hàng'}<br>
+                            <strong>Thanh toán:</strong> <span style="color: var(--primary-color); font-weight: bold;">${paymentText}</span>
+                        </div>
+
                         <ul class="order-items">
                             ${itemsHTML}
                         </ul>
@@ -266,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================
-    // 11. XỬ LÝ FORM LIÊN HỆ (Không chuyển trang, hiện Toast)
+    // 11. XỬ LÝ FORM LIÊN HỆ
     // ==========================================================
     const contactForm = document.querySelector('.contact-form form');
     if (contactForm) {
@@ -278,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================
-    // 12. GIẢ LẬP ĐĂNG NHẬP / ĐĂNG KÝ / ĐĂNG XUẤT (Session)
+    // 12. GIẢ LẬP ĐĂNG NHẬP / ĐĂNG KÝ / ĐĂNG XUẤT
     // ==========================================================
     const registerForm = document.querySelector('.auth-box form[action*="login.html"]');
     if (registerForm) {
@@ -300,8 +341,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Đồng bộ Header Navigation dựa trên trạng thái Đăng nhập
-    const currentUser = JSON.parse(localStorage.getItem('qt_user'));
     const navLists = document.querySelectorAll('.nav-links');
     const isAtRoot = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
     
@@ -333,7 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ==============================================
    CÁC HÀM HỖ TRỢ BÊN NGOÀI
    ============================================== */
-
 function renderCartPage() {
     const cartContainer = document.getElementById('cart-items-container');
     if (!cartContainer) return;
