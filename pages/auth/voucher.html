@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví Voucher của tôi | Quyết Tiến Coffee</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .voucher-container { max-width: 800px; margin: 2rem auto; padding: 0 5%; min-height: 60vh; }
+        .voucher-card { display: flex; background: #fff; border-radius: 10px; box-shadow: var(--card-shadow); margin-bottom: 1.2rem; overflow: hidden; }
+        .voucher-value { background: var(--primary-color); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; min-width: 110px; text-align: center; }
+        .voucher-value span { font-size: 1.4rem; font-weight: bold; color: var(--accent-color); }
+        .voucher-info { padding: 1.2rem 1.5rem; flex: 1; }
+        .voucher-info h3 { color: var(--primary-color); margin-bottom: 0.3rem; }
+        .voucher-info p { color: #777; font-size: 0.85rem; }
+        .voucher-expired { opacity: 0.5; }
+        .voucher-expired .voucher-value { background: #999; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">Quyết Tiến Coffee</a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/info/menu.html">Thực đơn</a></li>
+                <li><a href="/pages/auth/blog.html">Tin tức</a></li>
+                <li><a href="/pages/info/about.html">Về chúng tôi</a></li>
+                <li><a href="/pages/info/contact.html">Liên hệ</a></li>
+                <li><a href="/pages/shop/cart.html">Giỏ hàng <span class="cart-badge">0</span></a></li>
+                <li><a href="/pages/auth/profile.html" style="color: var(--accent-color);">Hồ sơ</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </header>
+
+    <main class="voucher-container">
+        <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Ví Voucher Của Tôi</h2>
+
+        <div class="voucher-card">
+            <div class="voucher-value"><span>-20%</span>Toàn menu</div>
+            <div class="voucher-info">
+                <h3>Ưu đãi Hạng Vàng</h3>
+                <p>Áp dụng cho mọi hóa đơn. Hạn sử dụng: 31/07/2026.</p>
+            </div>
+        </div>
+
+        <div class="voucher-card">
+            <div class="voucher-value"><span>Free</span>Ship</div>
+            <div class="voucher-info">
+                <h3>Miễn phí vận chuyển</h3>
+                <p>Áp dụng cho đơn hàng từ 100.000đ. Hạn sử dụng: 15/08/2026.</p>
+            </div>
+        </div>
+
+        <div class="voucher-card voucher-expired">
+            <div class="voucher-value"><span>-10%</span>Đồ uống</div>
+            <div class="voucher-info">
+                <h3>Chào mừng thành viên mới</h3>
+                <p>Đã hết hạn sử dụng vào 30/06/2026.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--primary-color); color: var(--text-light); padding: 3rem 5%; margin-top: auto;">
+        <div style="text-align: center; font-size: 0.8rem;">&copy; 2026 Quyết Tiến Coffee. Bảo lưu mọi quyền.</div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

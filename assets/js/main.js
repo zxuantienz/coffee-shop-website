@@ -5,6 +5,34 @@ const products = [
     { id: '3', name: 'Bánh Croissant Bơ Tỏi', price: 35000, category: 'bakery', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Bánh sừng trâu giòn rụm, thơm lừng bơ tỏi.', type: 'food' }
 ];
 
+// 1b. DATABASE BÀI VIẾT BLOG
+const blogPosts = [
+    {
+        id: '1',
+        tag: 'Kiến thức',
+        tagColor: '',
+        title: 'Phân biệt cà phê Arabica và Robusta',
+        img: 'https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=1200&q=80',
+        content: [
+            'Arabica và Robusta là hai giống cà phê phổ biến nhất thế giới, nhưng lại mang hương vị và đặc tính rất khác nhau. Arabica thường được trồng ở vùng núi cao, khí hậu mát mẻ, cho ra hạt cà phê có vị chua thanh nhẹ, hương thơm phức hợp và hàm lượng caffeine thấp hơn.',
+            'Trong khi đó, Robusta chịu được điều kiện khắc nghiệt hơn, dễ trồng ở vùng thấp như Tây Nguyên. Hạt Robusta có vị đắng đậm, hậu vị mạnh và hàm lượng caffeine cao gần gấp đôi Arabica, tạo nên lớp crema dày đặc trưng của cà phê phin Việt Nam.',
+            'Tại Quyết Tiến Coffee, chúng tôi thường phối trộn cả hai loại hạt theo tỷ lệ riêng để cân bằng giữa độ đậm đà và hương thơm, mang đến ly cà phê sữa đá vừa quen thuộc vừa có chiều sâu hương vị.'
+        ]
+    },
+    {
+        id: '2',
+        tag: 'Khuyến mãi',
+        tagColor: '#28a745',
+        title: 'Giảm giá 20% cho thành viên Hạng Vàng',
+        img: 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1200&q=80',
+        content: [
+            'Nhân dịp tri ân khách hàng thân thiết, Quyết Tiến Coffee dành tặng ưu đãi giảm giá 20% cho toàn bộ thực đơn dành riêng cho thành viên Hạng Vàng trong tháng này.',
+            'Chương trình áp dụng cho mọi hình thức đặt hàng — tại quầy, mang đi hoặc đặt online qua website. Số điểm tích lũy từ đơn hàng vẫn được cộng bình thường, không ảnh hưởng đến hạng thành viên hiện tại của bạn.',
+            'Để nhận ưu đãi, bạn chỉ cần đăng nhập tài khoản trước khi thanh toán. Ưu đãi có thể kết thúc sớm nếu số lượng ưu đãi trong tháng đã hết, hãy đặt hàng sớm để không bỏ lỡ nhé!'
+        ]
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
 
@@ -13,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================
     const currentUser = JSON.parse(localStorage.getItem('qt_user'));
     const currentPage = window.location.pathname;
-    const protectedPages = ['profile.html', 'history.html', 'checkout.html'];
+    const protectedPages = ['profile.html', 'history.html', 'checkout.html', 'voucher.html'];
     const isProtected = protectedPages.some(page => currentPage.includes(page));
 
     if (isProtected && (!currentUser || !currentUser.isLoggedIn)) {
@@ -59,6 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
             if (product.type === 'food') {
                 document.querySelectorAll('.drink-only-option').forEach(opt => opt.style.display = 'none');
             }
+        }
+    }
+
+    // 3b. XỬ LÝ TRANG CHI TIẾT BÀI VIẾT (blog-detail.html)
+    const blogDetailContainer = document.querySelector('.blog-detail-container');
+    if (blogDetailContainer) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id') || '1';
+        const post = blogPosts.find(p => p.id === postId);
+
+        if (!post) {
+            blogDetailContainer.innerHTML = `
+                <h1 style="color: red;">Không tìm thấy bài viết!</h1>
+                <p style="margin-top: 0.5rem;">Bài viết bạn tìm không tồn tại hoặc đã bị gỡ.</p>
+                <a href="/pages/auth/blog.html" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Quay lại Blog</a>
+            `;
+        } else {
+            const tagEl = document.getElementById('blog-detail-tag');
+            tagEl.textContent = post.tag;
+            if (post.tagColor) tagEl.style.background = post.tagColor;
+            document.getElementById('blog-detail-img').src = post.img;
+            document.getElementById('blog-detail-title').textContent = post.title;
+            document.getElementById('blog-detail-body').innerHTML = post.content
+                .map(p => `<p style="margin-bottom: 1rem; color: #555;">${p}</p>`)
+                .join('');
         }
     }
 
@@ -249,8 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 9. TRANG THÀNH CÔNG (success.html)
     const orderCodeElement = document.getElementById('success-order-code');
     if (orderCodeElement) {
-        const lastOrder = localStorage.getItem('qt_last_order') || '#QT0000';
-        orderCodeElement.textContent = 'Mã đơn hàng: ' + lastOrder;
+        const lastOrder = localStorage.getItem('qt_last_order');
+        if (lastOrder) {
+            orderCodeElement.textContent = 'Mã đơn hàng: ' + lastOrder;
+        } else {
+            orderCodeElement.textContent = 'Không tìm thấy đơn hàng gần đây';
+            const successTitle = document.querySelector('.success-container h1');
+            const successDesc = document.querySelector('.success-container p');
+            const trackBtn = document.querySelector('.success-container a[href*="history.html"]');
+            if (successTitle) successTitle.textContent = 'Chưa có đơn hàng nào được đặt';
+            if (successDesc) successDesc.textContent = 'Có vẻ bạn chưa đặt đơn hàng nào gần đây, hoặc phiên đặt hàng đã hết hạn. Hãy quay lại thực đơn để chọn món nhé!';
+            if (trackBtn) trackBtn.style.display = 'none';
+        }
     }
 
     // 10. RENDER LỊCH SỬ ĐƠN HÀNG (history.html)
